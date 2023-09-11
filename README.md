@@ -9,3 +9,10 @@ git branch -M main
 git remote add origin git@github.com:chuyong2/jk1-demo.git
 git push -u origin main
 ```
+
+```shell
+git add .
+git commit -m "msg"
+git status
+git push
+```
