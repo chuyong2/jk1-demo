@@ -1,0 +1,6 @@
+push.bat
+.vscode
+.idea
+*.xlsx
+**/**/node_modules
+**/**/miniprogram_npm
