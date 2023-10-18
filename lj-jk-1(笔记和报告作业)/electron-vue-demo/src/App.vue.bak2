@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <!-- 添加图标，其中 class 必须包含 iconfont -->
+    <span class="iconfont icon-Italy"></span>
+    <!-- 调整大小: font-size -->
+    <!-- 调整颜色: color -->
+    <span class="iconfont icon-Vietnam" style="font-size: 64px; color: rgb(255, 132, 0);"></span>
+    <!-- 彩色图标 -->
+    <svg class="icon" aria-hidden="true" style="font-size: 64px;">
+      <!-- 图标名填入 xlink:href -->
+      <use xlink:href="#icon-Italy"></use>
+    </svg>
+  </div>
+</template>
+
+<script>
+// 引入彩色图标
+import '@/assets/iconfont.js'
+
+export default {
+  name: 'App',
+  data() {
+    return {
+    }
+  },
+  methods: {
+  }
+}
+</script>
+
+<style>
+/* 引入图标 */
+@import '@/assets/iconfont.css';
+
+/* 引入彩色图标的通用配置 */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+</style>

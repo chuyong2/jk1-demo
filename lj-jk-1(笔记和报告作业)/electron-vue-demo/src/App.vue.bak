@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <h1>Hello Electron!!!</h1>
+    <div>
+      <!-- v-model 将输入框的值和 msg 属性进行绑定 -->
+      <input v-model="msg" type="text">
+      <button @click="send">发送消息给主进程</button>
+      <button @click="call">发送消息给主进程但是双向通信</button>
+      <button @click="readFile">读文件</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  created() {
+    window.receive = this.receive
+  },
+  methods: {
+    send() {
+      console.log('send');
+      // 访问msg属性
+      console.log(this.msg);
+      // 渲染进程中调用 preload.js 中暴露出来的函数
+      sendMessage(this.msg)
+    },
+    // 收到主进程的回复
+    receive(replyTxt) {
+      console.log('主进程的回复: ' + replyTxt);
+    },
+    // 双向通信时，渲染进程函数使用异步函数
+    async call() {
+      // 调用 preload.js 中暴露出来的属性
+      const result = await electronAPI.call(this.msg)
+      console.log(result);
+    },
+    async readFile(){
+      // 调用主进程读取文件
+      const result = await electronAPI.readFile()
+      console.log(result);
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

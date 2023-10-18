@@ -1,0 +1,33 @@
+<template>
+  <div>
+    <button @click="showMessageBox">显示消息对话框</button>
+    <button @click="openSaveDialog">打开保存对话框</button>
+    <button @click="showErrorBox">显示错误对话框</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+    }
+  },
+  methods: {
+    showMessageBox() {
+      // 利用 preload.js 中暴露出来的 electronAPI 调用进程通信
+      electronAPI.showMessageBox('今天天气很好')
+    },
+    // 由于openSaveDialog是异步的，所以添加 async 关键字
+    async openSaveDialog() {
+      const pathString = await electronAPI.openSaveDialog()
+      console.log(pathString);
+    },
+    showErrorBox() {
+      electronAPI.showErrorBox('我出错了')
+    }
+  }
+}
+</script>
+
+<style></style>

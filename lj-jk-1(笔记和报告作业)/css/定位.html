@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 定位: 确定标签的位置 */
+
+        .parent {
+            width: 500px;
+            height: 400px;
+            background-color: #f00;
+            margin: 100px;
+
+            position: relative;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: #ff0;
+
+            /* 1. 绝对定位: 参考系是视口 */
+            /* position: absolute; */
+            /* 通过 top bottom left right 来描述位置 */
+            /* top: 200px;
+            left: 300px; */
+
+
+            /* 2. 相对定位: 参考自己 */
+            /* position: relative;
+            top: 100px; */
+
+            /* 3. 修改绝对定位参考系
+                给需要变成参考系的父元素添加 position: relative; 就能把该父元素变成参考系
+            */
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+
+</html>

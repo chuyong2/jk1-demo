@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            height: 600px;
+            border: 10px solid #000;
+            box-sizing: content-box;
+
+            /* flex布局 */
+            /* flex布局相关样式分为父元素上的样式和子元素上的样式 */
+
+            /* 父元素上的样式如下 */
+
+            /* flex布局必须在父元素上使用 display: flex; 来开启flex布局 */
+            display: flex;
+
+            /* 主要轴排列方式 */
+            justify-content: flex-start;
+
+            /* 交叉轴排列方式 */
+            align-items: flex-start;
+
+            /* 修改主要轴方向 */
+            flex-direction: row;
+
+            /* 换行 */
+            flex-wrap: nowrap;
+
+            /* 多个主要轴在交叉轴的排列 */
+            /* 注意: 只有当元素换行时，产生了多个主要轴时，此属性才会生效 */
+            align-content: stretch;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            color: #fff;
+            font-weight: bolder;
+        }
+
+        .box1 {
+            /* flex在子元素上的属性 如下 */
+
+            /* 压缩比 */
+            /* 0代表不压缩 */
+            /* 值越大代表压缩比越大 */
+            flex-shrink: 2;
+
+            /* 成长比 */
+            /* 值越大代表占用剩余空间比例越大 */
+            flex-grow: 1;
+
+            /* 子元素在交叉轴上的排列方式 */
+            align-self: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child">1</div>
+        <div class="child box1">2</div>
+        <div class="child">3</div>
+        <div class="child">4</div>
+
+        <!-- <div class="child">1</div>
+        <div class="child">2</div>
+        <div class="child">3</div>
+        <div class="child">4</div> -->
+    </div>
+</body>
+
+</html>

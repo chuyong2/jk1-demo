@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 盒子模型主要规定了4个东西: 内容区域(content) 内边距(padding) 边框(border) 外边距(margin) */
+
+        .box {
+            /* 内容区域 */
+            /* width, height 指定元素宽高 */
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            /* 内边距: 内容到元素边缘的距离 */
+            /* padding: 10px; */
+            /* 可以通过 top bottom left right(上下左右) 来分别设置指定边上的内边距 */
+            padding-top: 15px;
+            padding-left: 20px;
+
+            /* 边框 */
+            border: 20px solid #000;
+            /* 边框宽度 */
+            border-width: 30px;
+            /* 边框样式 */
+            border-style: solid;
+            /* 边框颜色 */
+            border-color: #ff0;
+
+            /* 单独设置一边的边框 */
+            border-left: 10px dotted #f0f;
+
+            border-left-width: 30px;
+            border-left-color: #00f;
+            
+
+            /* 外边距: 元素离其他元素的距离 */
+            /* margin: 50px; */
+            margin-bottom: 50px;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        hello
+    </div>
+    <div class="box2"></div>
+</body>
+
+</html>

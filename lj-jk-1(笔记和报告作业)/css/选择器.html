@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1. 类选择器 */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+
+        /* 2. 标签选择器 */
+        div {
+            color: #0f0;
+        }
+
+        /* 3. 后代选择器 */
+        /* 选择 ul 下的所有后代的 li 标签 */
+        ul li {
+            color: #f00;
+        }
+
+        /* 4. 子代选择器 */
+        /* 选择 ul 下的所有子代的 li 标签 */
+        ul>li {
+            color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div>4</div>
+    <div>5</div>
+
+
+    <ul>
+        <li>1</li>
+        <li>2
+            <ol>
+                <li>2-1</li>
+                <li>2-2</li>
+                <li>2-3</li>
+            </ol>
+        </li>
+        <li>3</li>
+    </ul>
+</body>
+
+</html>

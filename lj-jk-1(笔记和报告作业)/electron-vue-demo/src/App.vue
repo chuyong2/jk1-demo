@@ -1,11 +1,7 @@
 <template>
   <div>
-    <h1>Hello Electron!!!</h1>
-    <div>
-      <!-- v-model 将输入框的值和 msg 属性进行绑定 -->
-      <input v-model="msg" type="text">
-      <button @click="send">发送消息给主进程</button>
-    </div>
+    <div class="area1" @contextmenu="showContextMenu1">第一个菜单区域</div>
+    <div class="area2" @contextmenu="showContextMenu2">第二个菜单区域</div>
   </div>
 </template>
 
@@ -14,35 +10,43 @@ export default {
   name: 'App',
   data() {
     return {
-      msg: ''
     }
   },
+  // created 方法，将在加载页面时调用
   created() {
-    window.receive = this.receive
+    // 监听全局鼠标右键
+    // window.addEventListener('contextmenu', () => {
+    //   console.log('contextmenu');
+    // })
   },
   methods: {
-    send() {
-      console.log('send');
-      // 访问msg属性
-      console.log(this.msg);
-      // 渲染进程中调用 preload.js 中暴露出来的函数
-      sendMessage(this.msg)
+    showContextMenu1(ev) {
+      console.log('showContextMenu1');
+      // ev: 事件对象，此处用于获取坐标
+      // ev.pageX  ev.pageY  是鼠标点击的页面坐标
+      console.log(ev);
+      console.log(ev.pageX, ev.pageY);
+
+      // 调用主进程
+      electronAPI.showContextMenu(ev.pageX, ev.pageY)
     },
-    // 收到主进程的回复
-    receive(replyTxt) {
-      console.log('主进程的回复: ' + replyTxt);
+    showContextMenu2() {
+      console.log('showContextMenu2');
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.area1 {
+  height: 200px;
+  border: 10px solid #f00;
+  box-sizing: content-box;
+}
+
+.area2 {
+  height: 200px;
+  border: 10px solid #ff0;
+  box-sizing: content-box;
 }
 </style>

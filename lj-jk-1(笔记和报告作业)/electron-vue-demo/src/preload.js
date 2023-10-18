@@ -32,3 +32,35 @@ contextBridge.exposeInMainWorld('sendMessage', (msg) => {
     // 第二个参数: 事件携带的数据
     ipcRenderer.send('chat', msg)
 })
+
+// api application programming interface 应用编程接口 语言或框架自带的提供开发者使用的一些内置工具，例如函数属性等称为api
+// sdk development toolkit  开发者工具，第三方平台提供sdk，用于完成第三方平台功能。hms sdk，live2d sdk
+contextBridge.exposeInMainWorld('electronAPI', {
+    // 声明一个调用主进程的对象方法
+    call: (msg) => {
+        // 调用 electron api
+        // 发起双向通信
+        // 第一个参数: 事件名
+        // 第二个参数: 事件携带的数据
+        return ipcRenderer.invoke('testHandle', msg)
+    },
+    readFile: () => {
+        // 调用主进程读取文件
+        return ipcRenderer.invoke('readFile')
+    },
+    // 显示消息对话框
+    showMessageBox: (msg) => {
+        ipcRenderer.send('showMessageBox', msg)
+    },
+    // 打开保存对话框
+    openSaveDialog: () => {
+        return ipcRenderer.invoke('openSaveDialog')
+    },
+    showErrorBox: (msg) => {
+        ipcRenderer.send('showErrorBox', msg)
+    },
+    // 显示上下文菜单
+    showContextMenu: (x, y) => {
+        ipcRenderer.send('showContextMenu', {x, y})
+    }
+})
